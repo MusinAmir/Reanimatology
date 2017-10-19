@@ -1,0 +1,15 @@
+<%= button_to 'Изменить данные пациента', edit_patient_path(@patient), :method => :get,:class => "btn btn-default" %>
+ <%= button_to "Удалить данные", {:controller => :day_statistics,
+      :action => 'destroy', :id => @day_statistic.id }, :method => :delete,
+          data: { confirm: 'Вы уверены?'}, :class => "btn btn-default" %>
+<div class='disable_input'>
+  <%= form_for([@patient, @patient.day_statistics.build]) do |f| %>
+    <%= render 'form', patient: @patient, :f => f %>
+  <% end %>
+</div>
+
+<%= button_to 'Назад', patients_path, :method => :get,:class => "btn btn-default" %>
+<script>
+  $('.disable_input :input').prop('disabled', true);
+  $('#day_form_button').hide()
+</script>

@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Пациент:</strong>
+  <%= @patient.name %>
+</p>
+<div class="btn-group">
+<% if @patient.day_statistics.size < 5 %>
+  <%= button_to 'Добавить новый день', new_patient_day_statistic_path(@patient), :method => :get,:class => "btn btn-default" %> 
+<% end %>
+<%= button_to 'Изменить данные пациента', edit_patient_path(@patient), :method => :get,:class => "btn btn-default" %>
+<%= button_to "Удалить пациента", {:controller => :patients,
+      :action => 'destroy', :id => @patient.id }, :method => :delete,
+          data: { confirm: 'Вы уверены?'}, :class => "btn btn-default" %>
+</div>
+<%= render 'day_statistics/index' %>
+</br>
+</br>
+<div class='disable_input'>
+  <%= form_for(@patient) do |f| %>
+    <%= render 'form', patient: @patient, :f => f %>
+  <% end %>
+</div>
+
+  <%= button_to 'Назад', patients_path, :method => :get,:class => "btn btn-default" %>
+
+<script>
+  $('.disable_input :input').prop('disabled', true);
+  $('#form_button').hide()
+</script>

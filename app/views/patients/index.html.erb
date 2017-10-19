@@ -1,0 +1,10 @@
+<p id="notice"><%= notice %></p>
+
+<h3>Ваши пациенты</h3>
+<div class="span2">
+  <% @patients.each do |patient| %>
+    <%= link_to patient.name, patient, class: "btn btn-success btn_xs btn-lg active btn-block", role: "button" %>
+    <% end %>
+</div>
+<br>
+<%= button_to 'Добавить пациента', new_patient_path, :method => :get,:class => "btn btn-default" %>

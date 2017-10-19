@@ -1,0 +1,72 @@
+<%= simple_form_for patient do |f| %>
+  <% if patient.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
+
+      <ul>
+      <% patient.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <%= f.input :name, label: 'Инициалы пациента' %>
+  <%= f.input :age_type, label: 'Возраст пациента', selected: [@age[0]], collection: @age %>
+  <%= f.input :clinic_diagnosis, label: 'Клинический диагноз', :input_html => { 'rows' => 4}%>
+  <%= f.input :intrance_date, label: 'Дата поступления', as: :date, start_year: Date.today.year, end_year: Date.today.year - 18, order: [:day, :month, :year] %>
+  <%= f.input :research_date, label: 'Дата включения в исследование', as: :date, start_year: Date.today.year, end_year: Date.today.year - 18, order: [:day, :month, :year] %>
+  <%= f.input :is_infection, label: 'Наличие инфекционного очага',  as: :boolean, checked_value: true, unchecked_value: false%>
+  <%= f.input :infection_localization, label: 'Локализация очага инфекции', disabled: true%>
+  <%= f.input :identified_pathogen, label: 'Выявленный возбудитель'%>
+  <%= f.input :pathogen_date, label: 'Дата выявления возбудителя', as: :date, start_year: Date.today.year, end_year: Date.today.year - 18, order: [:day, :month, :year] %> 
+  <%= f.input :antibacterial_therapy, label: 'Антибактериальная терапия, препарат, доза (мг/кг), кратность введения', :input_html => { 'rows' => 4}%>
+  <%= f.input :start_time_antibacterial_therapy, label: 'Время, прошедшее до начала антибактериальной терапии (ч)'%>
+  <%= f.input :volume_start_infusion, label: 'Объем стартовой инфузионной терапии (мл/кг/ч)'%>
+  <%= f.input :start_infusion_solution, label: 'Стартовый инфузионный раствор'%>
+  <%= f.input :is_ivl, label: 'Искусственная вентиляция легких', as: :boolean, checked_value: true, unchecked_value: false %>
+  <%= f.input :ivl_time, label: 'Длительность искусственной вентиляции легких (ч)', disabled: true%>
+  <%= f.input :is_sepsis, label: 'Установлен ли сепсис', as: :boolean, checked_value: true, unchecked_value: false %>
+  <%= f.input :sespsis_date, label: 'Дата установки сепсиса', as: :date, start_year: Date.today.year, end_year: Date.today.year - 18, order: [:day, :month, :year], disabled: true %> 
+  <%= f.input :is_renal_therapy, label: 'Использовалась ли заместительная почечная терапия', as: :boolean, checked_value: true, unchecked_value: false %>
+  <%= f.input :renal_therapy, label: 'Метод заместитетельной почечной терапии',disabled: true %>
+  <%= f.input :is_operation, label: 'Было ли оперативное вмешательство', as: :boolean, checked_value: true, unchecked_value: false %>
+  <%= f.input :final_diagnosis, label: 'Заключительный диагноз', :input_html => { 'rows' => 4} %>
+  <%= f.button :submit, 'Сохранить пациента', id: 'form_button' %>
+
+<% end %>
+
+<script>
+  $('#patient_is_infection').change(function(){
+    if ($('#patient_is_infection').is(':checked') == true){
+        $('#patient_infection_localization').val('').prop('disabled', false);
+    } else {
+        $('#patient_infection_localization').val('').prop('disabled', true);
+    }
+  });
+  $('#patient_is_ivl').change(function(){
+    if ($('#patient_is_ivl').is(':checked') == true){
+        $('#patient_ivl_time').val('0').prop('disabled', false);
+    } else {
+        $('#patient_ivl_time').val('0').prop('disabled', true);
+    }
+  });
+  $('#patient_is_sepsis').change(function(){
+    if ($('#patient_is_sepsis').is(':checked') == true){
+        $('#patient_sespsis_date_1i').prop('disabled', false);
+        $('#patient_sespsis_date_2i').prop('disabled', false);
+        $('#patient_sespsis_date_3i').prop('disabled', false);
+    } else {
+        $('#patient_sespsis_date_1i').prop('disabled', true);
+        $('#patient_sespsis_date_2i').prop('disabled', true);
+        $('#patient_sespsis_date_3i').prop('disabled', true);
+    }
+  });
+  $('#patient_is_renal_therapy').change(function(){
+    if ($('#patient_is_renal_therapy').is(':checked') == true){
+        $('#patient_renal_therapy').val('').prop('disabled', false);
+    } else {
+        $('#patient_renal_therapy').val('').prop('disabled', true);
+    }
+  });
+
+</script>

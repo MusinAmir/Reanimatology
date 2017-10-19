@@ -1,0 +1,5 @@
+<h3>Новый пациент</h3>
+
+<%= render 'form', patient: @patient, :class => "button alt" %>
+
+<%= button_to 'Назад', patients_path, :method => :get,:class => "btn btn-default" %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ccbo: 9.99
+  denver: 9.99
+  patient: one
+
+two:
+  ccbo: 9.99
+  denver: 9.99
+  patient: two

@@ -1,0 +1,24 @@
+<%= simple_form_for [patient, @day_statistic] do |f| %>
+  <%= f.input :left_ventrical_function, label: 'Фракция выброса левого желудочка (%)'%>
+  <%= f.input :heart_rate, label: 'Частота сердечных сокращений'%>
+  <%= f.input :breath_rate, label: 'Частота дыхания'%>
+  <%= f.input :leucocytes_count, label: 'Число лейкоцитов'%>
+  <%= f.input :systalic_ad, label: 'Систолическое артериальное давление'%>
+  <%= f.input :denver_pao2_fio2, label: 'Респираторный индекс PaO2(mm Hg)/FiO2'%>
+  <%= f.input :denver_creatinine, label: 'Креатинин (мг/дл)'%>
+  <%= f.input :bilirubin, label: 'Билирубин (мг/дл)'%>
+  <%= f.input :dopamine, label: 'Допамин'%>
+  <%= f.input :dobutamine, label: 'Добутамин'%>
+  <%= f.input :epinephrine, label: 'Адреналин'%>
+  <%= f.input :norepinephrine, label: 'Норадреналин'%>
+  <%= f.input :glasgow_coma, label: 'Оценка по шкале Glasgow coma'%>
+  <%= f.input :is_pupillary_reaction, label: 'Фотореакция зрачков', selected: ["Реагирует"], collection: ["Реагирует", "Не реагирует"]%>
+  <%= f.input :lactatemia, label: 'Уровень лактата (ммоль/л)'%>
+  <%= f.input :pelod_mean_ad, label: 'Среднее артериальное давление'%>
+  <%= f.input :pelod_pao2_fio2, label: 'Респираторный индекс Pa02(mm Hg)/FiO2. PaO2 - артериальная кровь'%>
+ <%= f.input :paco2, label: 'Парциальное напряжение CO2 (mmHg)'%>
+  <%= f.input :is_invasive_ventilation, label: 'Инвазивная вентиляция', as: :boolean, checked_value: true, unchecked_value: false %>
+  <%= f.input :trombocit_count, label: 'Число тромбоцитов'%>
+  <%= f.input :spo2_fio2, label: 'SpO2/FiO2'%>
+  <%= f.button :submit, 'Сохранить', id: 'day_form_button' %>
+<% end %>
