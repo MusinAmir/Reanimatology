@@ -81,3 +81,5 @@ test:
 production:
   <<: *default
   database: reanimatology_production
+    username: amir
+    password: amir
