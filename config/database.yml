@@ -83,5 +83,5 @@ production:
   encoding: unicode
   database: reanimatology
   pool: 5
-  username: amir
-  password: amir
+  username: reanimatology
+  password: reanimatology
