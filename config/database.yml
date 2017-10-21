@@ -81,5 +81,5 @@ test:
 production:
   <<: *default
   database: reanimatology_production
-  username: reanimatology
+  username: amir
   password: <%= ENV['REANIMATOLOGY_DATABASE_PASSWORD'] %>
