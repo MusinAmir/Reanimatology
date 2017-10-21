@@ -1,4 +1,4 @@
-  source 'https://rubygems.org'
+source 'https://rubygems.org'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -25,6 +25,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'bootstrap-sass'
 gem 'jquery-rails'
 gem 'sweetalert2'
+gem 'devise'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
