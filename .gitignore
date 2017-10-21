@@ -16,5 +16,4 @@
 /node_modules
 /yarn-error.log
 /config/environment_variables.yml
-/config/secrets.yml
 .byebug_history
