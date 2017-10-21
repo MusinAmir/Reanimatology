@@ -1,10 +1,16 @@
-<p id="notice"><%= notice %></p>
-
+<div class="container-fluid">
 <h3>Ваши пациенты</h3>
 <div class="span2">
+<ul class="list-group">
   <% @patients.each do |patient| %>
-    <%= link_to patient.name, patient, class: "btn btn-success btn_xs btn-lg active btn-block", role: "button" %>
+ <li class="list-group-item">
+    <%= link_to patient.name, patient, class: "btn btn-info", role: "button" %>
+    <%= link_to "Добавить/изменить информацию по выписке", add_information_patient_path(patient), class: "btn btn-info", role: "button" %>
+  <span class="badge"><%= patient.day_statistics.size %>
+  <span class="badge"><%= patient.day_statistics.size %> </span></li>  
     <% end %>
+    </ul>
 </div>
 <br>
 <%= button_to 'Добавить пациента', new_patient_path, :method => :get,:class => "btn btn-default" %>
+</div>  

@@ -1,18 +1,22 @@
-<p id="notice"><%= notice %></p>
+<div class="container-fluid">
+  <div class="page-header">  
+    <div class="pull-left">
+      <h2> Пациент: <%= @patient.name %><small></small></h2>
+    </div>
+  </div>
+  <div class="pull-right">
+    <div class="btn-group">
+      <% if @patient.day_statistics.size < 5 %>
+        <%= link_to 'Добавить новый день', new_patient_day_statistic_path(@patient), :role => "button",:class => "btn btn-success" %> 
+      <% end %>
+      <%= link_to 'Изменить данные', edit_patient_path(@patient), :role => "button", :class => "btn btn-info" %>
+      <%= link_to "Удалить пациента", @patient, :method => :delete, :role => "button",
+          data: { confirm: 'Вы уверены?'}, :class => "btn btn-danger" %>
+    </div>
+  </div>
 
-<p>
-  <strong>Пациент:</strong>
-  <%= @patient.name %>
-</p>
-<div class="btn-group">
-<% if @patient.day_statistics.size < 5 %>
-  <%= button_to 'Добавить новый день', new_patient_day_statistic_path(@patient), :method => :get,:class => "btn btn-default" %> 
-<% end %>
-<%= button_to 'Изменить данные пациента', edit_patient_path(@patient), :method => :get,:class => "btn btn-default" %>
-<%= button_to "Удалить пациента", {:controller => :patients,
-      :action => 'destroy', :id => @patient.id }, :method => :delete,
-          data: { confirm: 'Вы уверены?'}, :class => "btn btn-default" %>
-</div>
+</br>
+</br> 
 <%= render 'day_statistics/index' %>
 </br>
 </br>
@@ -23,7 +27,7 @@
 </div>
 
   <%= button_to 'Назад', patients_path, :method => :get,:class => "btn btn-default" %>
-
+</div>
 <script>
   $('.disable_input :input').prop('disabled', true);
   $('#form_button').hide()

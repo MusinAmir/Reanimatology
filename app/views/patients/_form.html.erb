@@ -16,7 +16,7 @@
   <%= f.input :intrance_date, label: 'Дата поступления', as: :date, start_year: Date.today.year, end_year: Date.today.year - 18, order: [:day, :month, :year] %>
   <%= f.input :research_date, label: 'Дата включения в исследование', as: :date, start_year: Date.today.year, end_year: Date.today.year - 18, order: [:day, :month, :year] %>
   <%= f.input :is_infection, label: 'Наличие инфекционного очага',  as: :boolean, checked_value: true, unchecked_value: false%>
-  <%= f.input :infection_localization, label: 'Локализация очага инфекции', disabled: true%>
+  <%= f.input :infection_localization, label: 'Локализация очага инфекции', disabled: true %>
   <%= f.input :identified_pathogen, label: 'Выявленный возбудитель'%>
   <%= f.input :pathogen_date, label: 'Дата выявления возбудителя', as: :date, start_year: Date.today.year, end_year: Date.today.year - 18, order: [:day, :month, :year] %> 
   <%= f.input :antibacterial_therapy, label: 'Антибактериальная терапия, препарат, доза (мг/кг), кратность введения', :input_html => { 'rows' => 4}%>
@@ -28,7 +28,7 @@
   <%= f.input :is_sepsis, label: 'Установлен ли сепсис', as: :boolean, checked_value: true, unchecked_value: false %>
   <%= f.input :sespsis_date, label: 'Дата установки сепсиса', as: :date, start_year: Date.today.year, end_year: Date.today.year - 18, order: [:day, :month, :year], disabled: true %> 
   <%= f.input :is_renal_therapy, label: 'Использовалась ли заместительная почечная терапия', as: :boolean, checked_value: true, unchecked_value: false %>
-  <%= f.input :renal_therapy, label: 'Метод заместитетельной почечной терапии',disabled: true %>
+  <%= f.input :renal_therapy, label: 'Метод заместитетельной почечной терапии', disabled: true %>
   <%= f.input :is_operation, label: 'Было ли оперативное вмешательство', as: :boolean, checked_value: true, unchecked_value: false %>
   <%= f.input :final_diagnosis, label: 'Заключительный диагноз', :input_html => { 'rows' => 4} %>
   <%= f.button :submit, 'Сохранить пациента', id: 'form_button' %>

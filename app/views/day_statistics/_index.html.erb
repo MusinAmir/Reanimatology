@@ -1,3 +1,4 @@
+
 <h4>Добавленные дни:</h4>
 <% @patient.day_statistics.each_with_index do |day_statistic, index| %>
   <%= button_to @day_strings[index], patient_day_statistic_path(@patient, day_statistic), :method => :get, :class => "btn btn-primary" %>  

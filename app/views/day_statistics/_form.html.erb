@@ -7,12 +7,15 @@
   <%= f.input :denver_pao2_fio2, label: 'Респираторный индекс PaO2(mm Hg)/FiO2'%>
   <%= f.input :denver_creatinine, label: 'Креатинин (мг/дл)'%>
   <%= f.input :bilirubin, label: 'Билирубин (мг/дл)'%>
-  <%= f.input :dopamine, label: 'Допамин'%>
-  <%= f.input :dobutamine, label: 'Добутамин'%>
-  <%= f.input :epinephrine, label: 'Адреналин'%>
-  <%= f.input :norepinephrine, label: 'Норадреналин'%>
+  <%= f.input :dopamine, label: 'Допамин', selected: [@dopamine_dosage[0]], collection: @dopamine_dosage %>
+  <%= f.input :dobutamine, label: 'Добутамин', selected: [@dobutamine_dosage[0]], 
+                                              collection: @dobutamine_dosage %>
+  <%= f.input :epinephrine, label: 'Адреналин', selected: [@epinephrine_dosage[0]], 
+                                          collection: @epinephrine_dosage %>
+  <%= f.input :norepinephrine, label: 'Норадреналин', selected: [@norepinephrine_dosage[0]], 
+                                              collection: @norepinephrine_dosage %>
   <%= f.input :glasgow_coma, label: 'Оценка по шкале Glasgow coma'%>
-  <%= f.input :is_pupillary_reaction, label: 'Фотореакция зрачков', selected: ["Реагирует"], collection: ["Реагирует", "Не реагирует"]%>
+  <%= f.input :is_pupillary_reaction, label: 'Фотореакция зрачков', selected: ["Сохранена"], collection: ["Сохранена", "Расширена > 3 мм"]%>
   <%= f.input :lactatemia, label: 'Уровень лактата (ммоль/л)'%>
   <%= f.input :pelod_mean_ad, label: 'Среднее артериальное давление'%>
   <%= f.input :pelod_pao2_fio2, label: 'Респираторный индекс Pa02(mm Hg)/FiO2. PaO2 - артериальная кровь'%>

@@ -54,9 +54,14 @@ class PatientsController < ApplicationController
     end
   end
 
-  # DELETE /patients/1
+  def add_information
+    @patient = Patient.find_by_id(params[:id])
+  end
+  # DELETE /patients/1s
   # DELETE /patients/1.json
   def destroy
+    @day_statistics = @patient.day_statistics.all
+    @day_statistics.delete_all
     @patient.destroy
     respond_to do |format|
       format.html { redirect_to patients_url, notice: 'Данные пациента удалены.' }

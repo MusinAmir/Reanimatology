@@ -16,28 +16,28 @@ ActiveRecord::Schema.define(version: 20171015153727) do
   enable_extension "plpgsql"
 
   create_table "day_statistics", force: :cascade do |t|
-    t.integer "left_ventrical_function"
-    t.integer "heart_rate"
-    t.integer "breath_rate"
-    t.decimal "leucocytes_count"
-    t.integer "systalic_ad"
-    t.integer "denver_pao2_fio2"
-    t.decimal "denver_creatinine"
-    t.decimal "bilirubin"
+    t.integer "left_ventrical_function", default: 0
+    t.integer "heart_rate", default: 0
+    t.integer "breath_rate", default: 0
+    t.decimal "leucocytes_count", default: "0.0"
+    t.integer "systalic_ad", default: 0
+    t.integer "denver_pao2_fio2", default: 0
+    t.decimal "denver_creatinine", default: "0.0"
+    t.decimal "bilirubin", default: "0.0"
     t.integer "dopamine"
     t.integer "dobutamine"
     t.integer "epinephrine"
     t.integer "norepinephrine"
-    t.integer "glasgow_coma"
-    t.boolean "is_pupillary_reaction"
-    t.decimal "lactatemia"
-    t.integer "pelod_mean_ad"
-    t.integer "pelod_creatinine"
-    t.integer "pelod_pao2_fio2"
-    t.integer "paco2"
+    t.integer "glasgow_coma", default: 0
+    t.boolean "is_pupillary_reaction", default: true
+    t.decimal "lactatemia", default: "0.0"
+    t.integer "pelod_mean_ad", default: 0
+    t.integer "pelod_creatinine", default: 0
+    t.integer "pelod_pao2_fio2", default: 0
+    t.integer "paco2", default: 0
     t.boolean "is_invasive_ventilation", default: false
-    t.integer "trombocit_count"
-    t.integer "spo2_fio2"
+    t.integer "trombocit_count", default: 0
+    t.integer "spo2_fio2", default: 0
     t.bigint "patient_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -47,31 +47,31 @@ ActiveRecord::Schema.define(version: 20171015153727) do
   end
 
   create_table "patients", force: :cascade do |t|
-    t.string "name"
-    t.integer "age_type"
-    t.text "clinic_diagnosis"
+    t.string "name", default: ""
+    t.integer "age_type", default: 0
+    t.text "clinic_diagnosis", default: ""
     t.date "intrance_date"
     t.date "research_date"
     t.boolean "is_infection", default: false
-    t.string "infection_localization"
-    t.string "identified_pathogen"
+    t.string "infection_localization", default: ""
+    t.string "identified_pathogen", default: ""
     t.date "pathogen_date"
-    t.text "antibacterial_therapy"
+    t.text "antibacterial_therapy", default: ""
     t.integer "start_time_antibacterial_therapy", default: 0
     t.integer "volume_start_infusion", default: 0
-    t.string "start_infusion_solution"
+    t.string "start_infusion_solution", default: ""
     t.boolean "is_ivl", default: false
     t.integer "ivl_time", default: 0
     t.boolean "is_sepsis", default: false
     t.date "sespsis_date"
     t.boolean "is_renal_therapy", default: false
-    t.string "renal_therapy"
+    t.string "renal_therapy", default: ""
     t.boolean "is_operation", default: false
-    t.text "final_diagnosis"
+    t.text "final_diagnosis", default: ""
     t.boolean "is_alive", default: true
-    t.integer "death_count_days"
-    t.integer "reanimation_count_days"
-    t.integer "hospital_count_days"
+    t.integer "death_count_days", default: 0
+    t.integer "reanimation_count_days", default: 0
+    t.integer "hospital_count_days", default: 0
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
