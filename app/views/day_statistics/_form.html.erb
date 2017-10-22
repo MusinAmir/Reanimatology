@@ -15,7 +15,7 @@
   <%= f.input :norepinephrine, label: 'Норадреналин', selected: [@norepinephrine_dosage[0]], 
                                               collection: @norepinephrine_dosage %>
   <%= f.input :glasgow_coma, label: 'Оценка по шкале Glasgow coma'%>
-  <%= f.input :is_pupillary_reaction, label: 'Фотореакция зрачков', selected: ["Сохранена"], collection: ["Сохранена", "Расширена > 3 мм"]%>
+  <%= f.input :is_pupillary_reaction, label: 'Фотореакция зрачков', selected: [@day_statistic.is_pupillary_reaction], :as => :select, collection: [["Сохранена",true],["Расширена > 3 мм", false]],include_blank: false %>
   <%= f.input :lactatemia, label: 'Уровень лактата (ммоль/л)'%>
   <%= f.input :pelod_mean_ad, label: 'Среднее артериальное давление'%>
   <%= f.input :pelod_pao2_fio2, label: 'Респираторный индекс Pa02(mm Hg)/FiO2. PaO2 - артериальная кровь'%>

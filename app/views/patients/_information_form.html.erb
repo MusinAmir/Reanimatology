@@ -1,0 +1,28 @@
+<%= simple_form_for @patient  do |f| %>
+  <%= f.input :is_alive, label: 'Исход заболевания', selected: [patient.is_alive], :as => :select, 
+            collection: [["Переведен из реанимации",true],["Умер",false]], 
+            include_blank: false %>
+  <%= f.input :death_count_days, label: 'На какие сутки наступил летальный исход', disabled: true %>
+  <%= f.input :reanimation_count_days, label: 'Длительность пребывания в реанимации' %>
+  <%= f.input :hospital_count_days, label: 'Длительность пребывания в стационаре'%>
+  <%= f.button :submit, 'Сохранить пациента', id: 'form_button' %>
+<% end %>
+<script>
+$( document ).ready(function() {
+   var text = $('#patient_is_alive').val()
+   if (text == "true"){
+        $('#patient_death_count_days ').val('0').prop('disabled', true);
+    } else {
+        $('#patient_death_count_days').prop('disabled', false);
+    }
+  $('#patient_is_alive').on('change', function (e) {
+    var optionSelected = $("option:selected", this);
+    var valueSelected = this.value;  
+    if(valueSelected == "true"){
+        $('#patient_death_count_days ').val('0').prop('disabled', true);
+    } else {
+        $('#patient_death_count_days').val('0').prop('disabled', false);
+    }
+  });
+  });
+</script>   

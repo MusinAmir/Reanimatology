@@ -5,8 +5,7 @@
   <% @patients.each do |patient| %>
  <li class="list-group-item">
     <%= link_to patient.name, patient, class: "btn btn-info", role: "button" %>
-    <%= link_to "Добавить/изменить информацию по выписке", add_information_patient_path(patient), class: "btn btn-info", role: "button" %>
-  <span class="badge"><%= patient.day_statistics.size %>
+    <%= link_to "Добавить/изменить информацию по выписке", add_information_patient_path(patient), class: "btn btn-info", role: "button" %> 
   <span class="badge"><%= patient.day_statistics.size %> </span></li>  
     <% end %>
     </ul>

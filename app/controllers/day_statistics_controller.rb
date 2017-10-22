@@ -2,7 +2,8 @@ class DayStatisticsController < ApplicationController
 	before_action :set_patient, :set_dosage_definitions
 	before_action :set_day_statistic, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
-	def index
+	
+  def index
 		@day_statistics = @patient.day_statistics.all
 	end
 

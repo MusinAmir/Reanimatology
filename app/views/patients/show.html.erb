@@ -9,9 +9,12 @@
       <% if @patient.day_statistics.size < 5 %>
         <%= link_to 'Добавить новый день', new_patient_day_statistic_path(@patient), :role => "button",:class => "btn btn-success" %> 
       <% end %>
+      <%= link_to "Добавить/изменить информацию по выписке", add_information_patient_path(@patient), class: "btn btn-primary", role: "button" %>
       <%= link_to 'Изменить данные', edit_patient_path(@patient), :role => "button", :class => "btn btn-info" %>
       <%= link_to "Удалить пациента", @patient, :method => :delete, :role => "button",
           data: { confirm: 'Вы уверены?'}, :class => "btn btn-danger" %>
+      <%= button_to 'Назад', patients_path, :method => :get,:class => "btn btn-default" %>
+
     </div>
   </div>
 
@@ -26,9 +29,10 @@
   <% end %>
 </div>
 
-  <%= button_to 'Назад', patients_path, :method => :get,:class => "btn btn-default" %>
 </div>
 <script>
+$( document ).ready(function() {
   $('.disable_input :input').prop('disabled', true);
   $('#form_button').hide()
+ });
 </script>

@@ -1,9 +1,11 @@
 <div class="container-fluid">
   <div class="pull-right">
     <div class="btn-group">   
-      <%= link_to 'Изменить данные', edit_patient_path(@patient), :role => "button",:class => "btn btn-info" %>
+      <%= link_to 'Изменить данные', edit_patient_day_statistic_path(@day_statistic), :role => "button",:class => "btn btn-info" %>
       <%= link_to "Удалить данные", @day_statistics, :method => :delete,:role => "button",
           data: { confirm: 'Вы уверены?'}, :class => "btn btn-danger" %>
+      <%= link_to 'Назад', patients_path, :role => "button",:class => "btn btn-default" %>
+
     </div>
  </div>
 </br>
@@ -13,9 +15,11 @@
   <% end %>
 </div>
 
-<%= button_to 'Назад', patients_path, :method => :get,:class => "btn btn-default" %>
 </div>
 <script>
+$( document ).ready(function() {
+
   $('.disable_input :input').prop('disabled', true);
   $('#day_form_button').hide()
+});
 </script>

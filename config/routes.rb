@@ -4,7 +4,9 @@ Rails.application.routes.draw do
   resources :patients do
     member do
       get 'add_information'
-    end  	
+    end
     resources :day_statistics
   end
+  get '*path' => redirect('/')
+
 end

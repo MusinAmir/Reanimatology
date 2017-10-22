@@ -1,5 +1,8 @@
-<h2>Добавление/изменение информации по выписке</h2>
-<%= render 'add_information_form', patient: @patient %>
+<div class="container-fluid">
+
+<h2>Изменение данных пациента</h2>
+
+<%= render 'information_form', patient: @patient %>
 
 <%= button_to 'Назад', patients_path, :method => :get,:class => "btn btn-default" %>
-  
+</div>

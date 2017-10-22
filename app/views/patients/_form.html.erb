@@ -1,17 +1,6 @@
 <%= simple_form_for patient do |f| %>
-  <% if patient.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(patient.errors.count, "error") %> prohibited this patient from being saved:</h2>
-
-      <ul>
-      <% patient.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-  <%= f.input :name, label: 'Инициалы пациента' %>
-  <%= f.input :age_type, label: 'Возраст пациента', selected: [@age[0]], collection: @age %>
+  <%= f.input :name, label: 'Инициалы пациента. Можно указать псевдоним, например пациент №1' %>
+  <%= f.input :age_type, label: 'Возраст пациента', selected: [patient.age_type], collection: @age %>
   <%= f.input :clinic_diagnosis, label: 'Клинический диагноз', :input_html => { 'rows' => 4}%>
   <%= f.input :intrance_date, label: 'Дата поступления', as: :date, start_year: Date.today.year, end_year: Date.today.year - 18, order: [:day, :month, :year] %>
   <%= f.input :research_date, label: 'Дата включения в исследование', as: :date, start_year: Date.today.year, end_year: Date.today.year - 18, order: [:day, :month, :year] %>
@@ -36,6 +25,34 @@
 <% end %>
 
 <script>
+  $( document ).ready(function() {
+
+    if ($('#patient_is_infection').is(':checked') == true){
+        $('#patient_infection_localization').prop('disabled', false);
+    } else {
+        $('#patient_infection_localization').val('').prop('disabled', true);
+    }
+    if ($('#patient_is_ivl').is(':checked') == true){
+        $('#patient_ivl_time').prop('disabled', false);
+    } else {
+        $('#patient_ivl_time').val('0').prop('disabled', true);
+    }
+    if ($('#patient_is_sepsis').is(':checked') == true){
+        $('#patient_sespsis_date_1i').prop('disabled', false);
+        $('#patient_sespsis_date_2i').prop('disabled', false);
+        $('#patient_sespsis_date_3i').prop('disabled', false);
+    } else {
+        $('#patient_sespsis_date_1i').prop('disabled', true);
+        $('#patient_sespsis_date_2i').prop('disabled', true);
+        $('#patient_sespsis_date_3i').prop('disabled', true);
+    }
+    if ($('#patient_is_renal_therapy').is(':checked') == true){
+        $('#patient_renal_therapy').prop('disabled', false);
+    } else {
+        $('#patient_renal_therapy').val('').prop('disabled', true);
+    }
+
+
   $('#patient_is_infection').change(function(){
     if ($('#patient_is_infection').is(':checked') == true){
         $('#patient_infection_localization').val('').prop('disabled', false);
@@ -67,6 +84,7 @@
     } else {
         $('#patient_renal_therapy').val('').prop('disabled', true);
     }
+  });
   });
 
 </script>
