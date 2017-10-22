@@ -1,8 +1,8 @@
 class PatientsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_patient, only: [:show, :edit, :update, :destroy, :add_information]
   before_action :set_age_options, :set_days_strings
-  before_action :authenticate_user!
-  
+
 
   # GET /patients
   # GET /patients.json

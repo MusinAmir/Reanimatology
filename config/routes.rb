@@ -8,5 +8,4 @@ Rails.application.routes.draw do
     resources :day_statistics
   end
   get '*path' => redirect('/')
-
 end

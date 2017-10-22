@@ -1,7 +1,7 @@
-    class DayStatisticsController < ApplicationController
-	before_action :set_patient, :set_dosage_definitions
-	before_action :set_day_statistic, only: [:show, :edit, :update, :destroy]
+class DayStatisticsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_patient, :set_dosage_definitions
+  before_action :set_day_statistic, only: [:show, :edit, :update, :destroy]
 	
   def index
 		@day_statistics = @patient.day_statistics.all
