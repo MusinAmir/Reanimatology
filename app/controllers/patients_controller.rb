@@ -1,5 +1,5 @@
 class PatientsController < ApplicationController
-  before_action :set_patient, only: [:show, :edit, :update, :destroy]
+  before_action :set_patient, only: [:show, :edit, :update, :destroy, :add_information]
   before_action :set_age_options, :set_days_strings
   before_action :authenticate_user!
   
@@ -56,7 +56,6 @@ class PatientsController < ApplicationController
   end
 
   def add_information
-    @patient = Patient.find_by_id(params[:id])
   end
   # DELETE /patients/1s
   # DELETE /patients/1.json
@@ -73,7 +72,7 @@ class PatientsController < ApplicationController
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_patient
-        if Patient.exists?(id: params[:id])
+        if Patient.exists?(id: params[:id], user_id: current_user.id)
           @patient = Patient.find(params[:id])
         else
           redirect_to root_path

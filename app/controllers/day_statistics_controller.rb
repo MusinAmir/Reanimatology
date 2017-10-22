@@ -58,7 +58,7 @@
   private
 
   	def set_day_statistic
-      if DayStatistic.exists?(id: params[:id])
+      if DayStatistic.exists?(id: params[:id], user_id: current_user.id)
         @day_statistic = DayStatistic.find(params[:id])
       else
         redirect_to @patient
@@ -66,7 +66,7 @@
   	end
 
   	def set_patient
-      if Patient.exists?(id: params[:patient_id])
+      if Patient.exists?(id: params[:patient_id], user_id: current_user.id)
           @patient = Patient.find(params[:patient_id])
         else
           redirect_to root_path
