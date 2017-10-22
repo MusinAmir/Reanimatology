@@ -13,6 +13,7 @@ class PatientsController < ApplicationController
   # GET /patients/1
   # GET /patients/1.json
   def show
+
   end
 
   # GET /patients/new
@@ -72,7 +73,11 @@ class PatientsController < ApplicationController
     private
       # Use callbacks to share common setup or constraints between actions.
       def set_patient
-        @patient = Patient.find(params[:id])
+        if Patient.exists?(id: params[:id])
+          @patient = Patient.find(params[:id])
+        else
+          redirect_to root_path
+        end
       end
 
     # Never trust parameters from the scary internet, only allow the white list through.
@@ -84,7 +89,7 @@ class PatientsController < ApplicationController
         :sespsis_date, :is_renal_therapy, :renal_therapy, :is_operation, :final_diagnosis, :is_alive, :death_count_days, :reanimation_count_days, :hospital_count_days)
     end      
     def set_age_options
-      @age = {'0-6 мес'=>1, '6 мес-1 год'=>2, '1-3 года' =>3, '4-6 лет' => 4, '7-10 лет'=> 5, '11 и старше'=>6}   
+      @age = {'0-6 мес'=>1, '6 мес-1 год'=> 2, '1-3 года' => 3, '4-6 лет' => 4, '7-10 лет'=> 5, '11 и старше'=> 6}   
     end
     
     def set_days_strings

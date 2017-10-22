@@ -1,4 +1,4 @@
-class DayStatisticsController < ApplicationController
+    class DayStatisticsController < ApplicationController
 	before_action :set_patient, :set_dosage_definitions
 	before_action :set_day_statistic, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
@@ -58,11 +58,19 @@ class DayStatisticsController < ApplicationController
   private
 
   	def set_day_statistic
-  		@day_statistic = DayStatistic.find(params[:id])
+      if DayStatistic.exists?(id: params[:id])
+        @day_statistic = DayStatistic.find(params[:id])
+      else
+        redirect_to @patient
+      end      
   	end
 
   	def set_patient
-  		@patient = Patient.find(params[:patient_id])
+      if Patient.exists?(id: params[:patient_id])
+          @patient = Patient.find(params[:patient_id])
+        else
+          redirect_to root_path
+        end
   	end
       
     def day_statistic_params
@@ -74,9 +82,9 @@ class DayStatisticsController < ApplicationController
     end
     
     def set_dosage_definitions
-      @dopamine_dosage = {'< 6'=> 0, '[6, 15]' => 1, '> 15' => 2 }
-      @dobutamine_dosage = {'< 6'=> 0, '[6, 15]' => 1, '> 15' => 2 }
-      @epinephrine_dosage = {'< .06'=> 0, '[.06, .25]' => 1, '> .25' => 2 }
-      @norepinephrine_dosage = {'< .11'=> 0, '[.11, .50]' => 1, '> .50' => 2 }
+      @dopamine_dosage = {'Не использовался'=> 0, '< 6'=> 1, '[6, 15]' => 2, '> 15' => 3 }
+      @dobutamine_dosage = {'Не использовался'=> 0, '< 6'=> 1, '[6, 15]' => 2, '> 15' => 3 }
+      @epinephrine_dosage = {'Не использовался'=> 0,'< 0.06'=> 1, '[0.06, 0.25]' => 2, '> 0.25' => 3 }
+      @norepinephrine_dosage = {'Не использовался'=> 0,'< 0.11'=> 1, '[0.11, 0.50]' => 2, '> 0.50' => 3 }
     end      
 end
