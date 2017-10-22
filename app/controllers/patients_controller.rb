@@ -62,7 +62,6 @@ class PatientsController < ApplicationController
   def destroy
     @day_statistics = @patient.day_statistics.all
     @day_statistics.delete_all
-    @patient.patient_result.destroy
     @patient.destroy
     respond_to do |format|
       format.html { redirect_to patients_url, notice: 'Данные пациента удалены.' }

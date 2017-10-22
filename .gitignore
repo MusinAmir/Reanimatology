@@ -12,8 +12,7 @@
 /tmp/*
 !/log/.keep
 !/tmp/.keep
-
+/config/secrets.yml
 /node_modules
 /yarn-error.log
-/config/environment_variables.yml
 .byebug_history
